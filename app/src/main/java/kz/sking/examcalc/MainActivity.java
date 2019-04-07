@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Калькулятор баллов");
 
         // Доступ к компонентам окна
         editText_num1 = (EditText)findViewById(R.id.editText_num1);
@@ -78,16 +79,16 @@ public class MainActivity extends AppCompatActivity {
                 } else if (a < 50 || a > 100) {
                     errorText.setText(String.format("Неверный рейтинг допуска"));
                 } else if (b < 50 || b > 100) {
-                    errorText.setText(String.format("Неверная экзаменнационная оценка"));
+                    errorText.setText(String.format("Неверная итоговая оценка"));
                 } else if (Math.round(a*0.6) < (b - 40)) {
                     errorText.setText(String.format("Слишком низкий РД для желаемой оценки"));
                 }else {
-//                result = Math.round((b - (a * 0.6)) / 40) * 100;
+//                result = Math.floor((b - (a * 0.6)) * 0.4);
                     result = Math.round(b - (a * 0.6));
                     result = (result / 40) * 100;
 //                result = result * 100;
                     if (result >= 50) {
-                        for (int i=0; i <=5; i++) {
+                        for (int i=0; i <=2; i++) {
                             if (b == Math.round((a * 0.6) + ((result - 1) * 0.4))) {
                                 result = result - 1;
                             }
@@ -114,10 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 } else if (b < 50 || b > 100) {
                     errorText.setText(String.format("Неверная экзаменнационная оценка"));
                 }  else {
-                    result = (a * 0.6) + (b * 0.4);
-                    resultText.setText("Итоговый балл: " + (String.format("%.2f", result)) + "\n\n");
-                    result = Math.round(result);
-                    resultText.append("Округленный итоговый балл: " + (String.format("%.0f", result)));
+                    result = Math.round((a * 0.6) + (b * 0.4));
+                    resultText.append("Итоговый балл: " + (String.format("%.0f", result)));
                     letterResult(result);
                 }
             } catch (Exception ex) {
