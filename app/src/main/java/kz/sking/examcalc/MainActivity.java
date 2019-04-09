@@ -83,12 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (Math.round(a*0.6) < (b - 40)) {
                     errorText.setText(String.format("Слишком низкий РД для желаемой оценки"));
                 }else {
-//                result = Math.floor((b - (a * 0.6)) * 0.4);
-                    result = Math.round(b - (a * 0.6));
-                    result = (result / 40) * 100;
-//                result = result * 100;
+                    result = Math.floor((b - (a * 0.6))/0.4);
                     if (result >= 50) {
-                        for (int i=0; i <=2; i++) {
+                        for (int i=0; i <=5; i++) {
                             if (b == Math.round((a * 0.6) + ((result - 1) * 0.4))) {
                                 result = result - 1;
                             }

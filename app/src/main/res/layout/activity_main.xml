@@ -143,6 +143,7 @@
         android:layout_marginRight="20dp"
         android:onClick="switchClick"
         android:text="@string/switch_text"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
